@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # flutter_with_data
 
 A new Flutter project.
