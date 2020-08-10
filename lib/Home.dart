@@ -15,6 +15,13 @@ class _HomeState extends State<Home> {
   List<Contact> contactList;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    dbHelper = DBHelper();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (contactList == null) {
       contactList = List<Contact>();
@@ -23,7 +30,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Daftar data-data"),
-        leading: Icon(Icons.menu),
       ),
       body: createListView(),
       floatingActionButton: FloatingActionButton(
@@ -49,33 +55,35 @@ class _HomeState extends State<Home> {
   ListView createListView() {
     TextStyle textStyle = Theme.of(context).textTheme.subhead;
 
-    return ListView.builder(itemBuilder: (BuildContext context, int index) {
-      return Card(
-        color: Colors.white,
-        elevation: 2.0,
-        child: ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.red,
-            child: Icon(Icons.people),
-          ),
-          title: Text(this.contactList[index].name, style: textStyle),
-          subtitle: Text(
-            this.contactList[index].phone,
-          ),
-          trailing: GestureDetector(
-            child: Icon(Icons.delete),
-            onTap: () {
-              deleteContact(contactList[index]);
-            },
-          ),
-          onTap: () async {
-            var contact =
-                await navigateToEntryForm(context, this.contactList[index]);
-            if (contact != null) editContact(contact);
-          },
-        ),
-      );
-    });
+    return ListView.builder(
+        itemCount: count,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.red,
+                child: Icon(Icons.people),
+              ),
+              title: Text(this.contactList[index].name, style: textStyle),
+              subtitle: Text(
+                this.contactList[index].phone,
+              ),
+              trailing: GestureDetector(
+                child: Icon(Icons.delete),
+                onTap: () {
+                  deleteContact(contactList[index]);
+                },
+              ),
+              onTap: () async {
+                var contact =
+                    await navigateToEntryForm(context, this.contactList[index]);
+                if (contact != null) editContact(contact);
+              },
+            ),
+          );
+        });
   }
 
   void addContact(Contact contact) async {

@@ -14,8 +14,13 @@ class Contact {
   String get name => _name;
   String get phone => _phone;
 
-  set name(String value) => _name = value;
-  set phone(String value) => _phone = value;
+  set name(String value) {
+    _name = value;
+  }
+
+  set phone(String value) {
+    _phone = value;
+  }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();

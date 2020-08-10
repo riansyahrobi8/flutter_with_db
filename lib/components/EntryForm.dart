@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_with_data/Home.dart';
 import 'package:flutter_with_data/models/Contact.dart';
 
 class EntryForm extends StatefulWidget {
@@ -28,7 +29,11 @@ class _EntryFormState extends State<EntryForm> {
     return Scaffold(
       appBar: AppBar(
         title: contact == null ? Text('Tambah') : Text('Ubah'),
-        leading: Icon(Icons.keyboard_arrow_left),
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.keyboard_arrow_left)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
