@@ -1,32 +1,32 @@
 class Contact {
-  int _id;
-  String _name, _phone;
+  int id;
+  String name, phone;
 
-  Contact(this._name, this._phone);
+  Contact(this.name, this.phone);
 
   Contact.fromMap(Map<String, dynamic> map) {
-    this._id = map['id'];
-    this._name = map['name'];
-    this._phone = map['phone'];
+    this.id = map['id'];
+    this.name = map['name'];
+    this.phone = map['phone'];
   }
 
-  int get id => _id;
-  String get name => _name;
-  String get phone => _phone;
+  // int get id => id;
+  // String get name => _name;
+  // String get phone => _phone;
 
-  set name(String value) {
-    _name = value;
-  }
+  // set name(String value) {
+  //   _name = value;
+  // }
 
-  set phone(String value) {
-    _phone = value;
-  }
+  // set phone(String value) {
+  //   _phone = value;
+  // }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();
-    map['id'] = this._id;
-    map['name'] = this._name;
-    map['phone'] = this._phone;
+    map['id'] = this.id;
+    map['name'] = this.name;
+    map['phone'] = this.phone;
 
     return map;
   }
