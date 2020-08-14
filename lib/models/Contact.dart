@@ -1,9 +1,15 @@
+/**
+ * ini merupakan class model dari contact
+ * bisa di ibaratkan sebagai kerangka atau cetakan
+ * dari data yang ingin ditampilkan
+ */
 class Contact {
   int id;
   String name, phone;
 
-  Contact(this.name, this.phone);
+  Contact({this.name, this.phone}); // controller dengan optional params
 
+  // menambahkan method fromMap
   Contact.fromMap(Map<String, dynamic> map) {
     this.id = map['id'];
     this.name = map['name'];
@@ -22,6 +28,7 @@ class Contact {
   //   _phone = value;
   // }
 
+  // menambahkan method toMap
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();
     map['id'] = this.id;

@@ -27,7 +27,10 @@ class _EntryFormState extends State<EntryForm> {
 
     return Scaffold(
       appBar: AppBar(
-        title: contact == null ? Text('Tambah') : Text('Ubah'),
+        title: contact == null
+            ? Text('Tambah')
+            : Text(
+                'Ubah'), // jika klik tombol tambah ubah judul app bar dengan Tambah, jika klik contact maka ubah judul appbar jadi Ubah
         leading: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -42,9 +45,9 @@ class _EntryFormState extends State<EntryForm> {
             padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
             child: TextField(
               controller: nameController,
-              onChanged: (value) {
-                // do someting
-              },
+              // onChanged: (value) {
+              //   // do someting
+              // },
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   labelText: 'Nama Lengkap',
@@ -58,9 +61,9 @@ class _EntryFormState extends State<EntryForm> {
             padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
             child: TextField(
               controller: phoneController,
-              onChanged: (value) {
-                // do something
-              },
+              // onChanged: (value) {
+              //   // do something
+              // },
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   labelText: 'Telepon',
@@ -79,8 +82,9 @@ class _EntryFormState extends State<EntryForm> {
                   onPressed: () {
                     if (contact == null) {
                       // insert data
-                      contact =
-                          Contact(nameController.text, phoneController.text);
+                      contact = Contact(
+                          name: nameController.text,
+                          phone: phoneController.text);
                     } else {
                       // edit data
                       contact.name = nameController.text;
@@ -117,5 +121,13 @@ class _EntryFormState extends State<EntryForm> {
         ]),
       ),
     );
+  }
+
+  // tambahkan function dispose agar memory tidak leak
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    super.dispose();
   }
 }

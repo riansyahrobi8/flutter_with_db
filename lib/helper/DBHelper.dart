@@ -57,7 +57,7 @@ class DBHelper {
     return mapList;
   }
 
-  // create database
+  // insert database
   Future<int> insert(Contact object) async {
     Database db = await this.database;
     int count = await db.insert('contact', object.toMap());

@@ -6,7 +6,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter DB",
-      theme: ThemeData(primarySwatch: Colors.red),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primarySwatch: Colors.red), // set thema aplikasi secara keseluruhan
       home: Home(),
     );
   }
